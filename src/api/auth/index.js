@@ -8,6 +8,7 @@ auth.get('/checkUserInfo',CheckUserInfo);
 auth.get('/followList',FollowList);
 auth.get('/confirmEmail',ConfirmEmail);
 
+auth.post('/updateUserInfo',UpdateUserInfo);
 auth.post('/register',Register);
 auth.post('/login',Login);
 auth.post('/sendChangePW',SendChangePW);
