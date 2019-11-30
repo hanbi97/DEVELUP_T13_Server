@@ -19,6 +19,10 @@ export const Organization=(sequelize,DataTypes)=>{
             type : DataTypes.JSON,
             allowNUll : true
         },
+        user_count : {
+            type : DataTypes.INTEGER,
+            allowNUll : false
+        },
         location : {
             type : DataTypes.STRING,
             allowNUll : false
