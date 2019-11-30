@@ -28,15 +28,15 @@ export const Organization=(sequelize,DataTypes)=>{
             allowNUll : false
         },
         start_time : {
-            type : DataTypes.DATE,
+            type : DataTypes.STRING,
             allowNUll : false
         },
         finish_time : {
-            type : DataTypes.DATE,
+            type : DataTypes.STRING,
             allowNUll : false
         },
         dev_types : {
-            type : DataTypes.JSON,
+            type : DataTypes.STRING,
             allowNUll : true
         }
     });

@@ -1,23 +1,25 @@
 import Joi from 'joi';
 
+import { user } from 'models';
 import { organization } from 'models';
 
-// 그룹등록, 오늘보다 이전날짜에 못만남
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const Register = async (ctx) =>{
     const Request = Joi.object().keys({
         group_name: Joi.string().min(1).max(30).required(),
         autor : Joi.string().min(2).max(20).required(),
         location : Joi.string().required(),
-        start_time : Joi.date().required(),
-        finish_time : Joi.date().required(),
-        dev_types : Joi.JSON().required(),
-        user_count : Joi.integer().required()
+        start_time : Joi.string().required(),
+        finish_time : Joi.string().required(),
+        dev_types : Joi.string().required(),
+        user_count : Joi.number().required()
     });
 
     const result = Joi.validate(ctx.request.body,Request);
 
-    if(result.error){
+    if(!result.error){
         console.log("Register - JOI template error")
         ctx.status = 400;
         ctx.body = {
@@ -25,14 +27,23 @@ export const Register = async (ctx) =>{
         }
         return;
     }
+
+
     await organization.create({
-        "group_name" : group_name,
-        "author" : author,        
-        "location" : location,
-        "start_time" : start_time,
-        "finish_time" : finish_time,
-        "user_count" : user_count,
-        "dev_types" : dev_types
-    })
+        "group_name" : ctx.request.body.group_name,
+        "author" : ctx.request.body.author,        
+        "location" : ctx.request.body.location,
+        "start_time" : ctx.request.body.start_time,
+        "finish_time" : ctx.request.body.finish_time,
+        "user_count" : ctx.request.body.user_count,
+        "dev_types" : ctx.request.body.dev_types
+    });
+
+    console.log('새로운 모임 정보가 등록되었습니다.');
+
+    ctx.status =200;
+    ctx.body ={
+        "group_name" : ctx.request.body.group_name
+    };
     
 }
