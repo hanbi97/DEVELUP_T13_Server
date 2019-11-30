@@ -15,13 +15,15 @@ export const Organization=(sequelize,DataTypes)=>{
             type : DataTypes.STRING,
             allowNUll : false
         },
-        userlist : {
-            type : DataTypes.JSON,
+        usermax_count : {
+            type : DataTypes.INTEGER,
+            defaultValue : 7,
             allowNUll : true
         },
         user_count : {
             type : DataTypes.INTEGER,
-            allowNUll : false
+            defaultValue : 0,
+            allowNUll : true
         },
         location : {
             type : DataTypes.STRING,
@@ -36,7 +38,7 @@ export const Organization=(sequelize,DataTypes)=>{
             allowNUll : false
         },
         dev_types : {
-            type : DataTypes.STRING,
+            type: DataTypes.ENUM("Webfront","Webback","Server","Android","IOS"),
             allowNUll : true
         }
     });

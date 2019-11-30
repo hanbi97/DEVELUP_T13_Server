@@ -31,7 +31,7 @@ export const User = (sequelize, DataTypes) => {
       allowNull: false
     },
     skill_types: {
-      type: DataTypes.STRING,
+      type: DataTypes.ENUM("Web-frontend","Web-backend","Server","Android","IOS"),
       allowNull: true
     },
     validation: {
