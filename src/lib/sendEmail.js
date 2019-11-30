@@ -24,7 +24,7 @@ export const sendRegisterEmail = (email, key_for_verify) => {
             address : process.env.email_id
         },
         to : email,
-        subject : '[잎새] 이메일 인증을 진행하여주세요',
+        subject : '이메일 인증을 진행하여주세요',
         html : '<h1>이메일 인증을 위해 URL을 클릭하여주세요.</h1><br>'+url
     };
 
@@ -48,7 +48,7 @@ export const sendPasswordChange = (email) => {
             address : process.env.email_id
         },
         to : email,
-        subject : '[잎새] 비밀번호 변경을 위한 이메일입니다.',
+        subject : '비밀번호 변경을 위한 이메일입니다.',
         html : '<h1>비밀번호 변경을 위해 URL을 클릭하여주세요.</h1><br>'+url
     };
 
@@ -72,7 +72,7 @@ export const sendPleaseAnswer = (email) => {
             address : process.env.email_id
         },
         to : email,
-        subject : '[잎새] 새로운 질문이 들어왔습니다.',
+        subject : '새로운 질문이 들어왔습니다.',
         html : '<h1>새로운 질문에 대답해주세요.</h1>'
     };
 
@@ -96,7 +96,7 @@ export const sendAnswered = (email) => {
             address : process.env.email_id
         },
         to : email,
-        subject : '[잎새] 문의하신 질문에 대한 답변이 완료되었습니다.',
+        subject : '문의하신 질문에 대한 답변이 완료되었습니다.',
         html : '<h1>잎새에 로그인하셔서 지금 확인해보세요!</h1>'
     };
 
