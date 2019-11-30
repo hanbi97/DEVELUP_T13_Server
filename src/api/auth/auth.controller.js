@@ -88,7 +88,7 @@ export const Register = async (ctx) =>{
 export const Login = async (ctx) =>{
     const Request = Joi.object().keys({
         email : Joi.string().email().min(5).max(50).required(),
-        password : Joi.string().min(5).max(50).required
+        password : Joi.string().min(5).max(50).required()
     });
 
     console.log(ctx.request.body);
@@ -112,7 +112,7 @@ export const Login = async (ctx) =>{
     });
 
     if(founded==null){
-        console.log(`${ctx.request.body.id}: 존재하지 않는 계정`);
+        console.log(`${ctx.request.body.email}: 존재하지 않는 계정`);
         ctx.status = 400;
         ctx.body ={
             "error" : "003"
@@ -135,7 +135,7 @@ export const Login = async (ctx) =>{
         user_id : founded.user_id
     };
 
-    let token =null;
+    let token = null;
     token = await generateToken(payload);
 
     console.log(`${founded.user_id} 로그인 성공`);
@@ -192,7 +192,7 @@ export const CheckUserInfo = async (ctx) =>{
 export const CheckUserId = async (ctx) =>{
     const founded = await user.findOne({
         where : {
-            "user_id" : decoded.user_id
+            "user_id" : ctx.request.body.user_id
         }
     });
 
@@ -200,7 +200,7 @@ export const CheckUserId = async (ctx) =>{
     ctx.body={
         "name" : founded.name,
         "thumbnail" : founded.thumbnail,
-        "user_id" : decoded.user_id,
+        "user_id" : ctx.request.body.user_id,
         "email" : founded.email,
         "introduce" : founded.introduce,
         "skill_types" : founded.skill_types
