@@ -17,4 +17,4 @@ const sequelize = new Sequelize(
 const user = User(sequelize,Sequelize);
 const organization = Organization(sequelize,Sequelize);
 
-export { sequelize, Sequelize };  
+export { sequelize, Sequelize, user, organization};  
