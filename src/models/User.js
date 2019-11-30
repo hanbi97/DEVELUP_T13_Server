@@ -31,7 +31,7 @@ export const User = (sequelize, DataTypes) => {
       allowNull: false
     },
     skill_types: {
-      type: DataTypes.JSON,
+      type: DataTypes.STRING,
       allowNull: true
     },
     validation: {

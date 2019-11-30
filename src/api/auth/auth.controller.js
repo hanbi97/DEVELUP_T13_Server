@@ -3,7 +3,7 @@ UpdateUserInfo, ConfirmEmail, SendChangePW, checkPassword, FollowList*/
 import Joi from 'joi';
 import crypto from 'crypto'; //암호화 관련 모듈, Cipher:일반적인 암호화(key를 이용해 암호화,복호화) Hmac: 되돌릴 수 없게 암호화, 암호화 된 것 자체를 이용
 
-import { user } from 'models';
+import { user } from '../../models';
 import { generateToken, decodeToken } from 'lib/token.js';
 import { sendRegisterEmail, sendPasswordChange } from 'lib/sendEmail.js';
 
